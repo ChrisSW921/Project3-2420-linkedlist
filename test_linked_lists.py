@@ -42,7 +42,7 @@ class TestEmptyCourseList(unittest.TestCase):
         self.assertAlmostEqual(cl.calculate_gpa(), 0.0)
         self.assertAlmostEqual(cl.calculate_gpa(), 0.0)
         self.assertTrue(cl.is_sorted())
-    
+
 class TestNominalCourseList(unittest.TestCase):
     def test_insert(self):
         random.seed(0)
@@ -141,7 +141,7 @@ class TestRecursion(unittest.TestCase):
         RecursionCounter.recursion_count = 0
         cl.remove(1005)
         self.assertGreater(RecursionCounter.recursion_count, 4)
-        
+
     def test_sorted_recursion(self):
         cl = CourseList()
         for i in range(1000, 1010):
@@ -149,7 +149,7 @@ class TestRecursion(unittest.TestCase):
         RecursionCounter.recursion_count = 0
         cl.is_sorted()
         self.assertGreater(RecursionCounter.recursion_count, 9)
-    
+
     def test_gpa_recursion(self):
         tmp = TestNominalCourseList()
         RecursionCounter.recursion_count = 0
@@ -182,4 +182,4 @@ class TestDriverOutput(unittest.TestCase):
         data = "".join(captured_output.getvalue().split())
 
         data1 = "Current List: (5)cs1030 Introduction to Computers Grade:3.2 Credit Hours: 2.0cs1400 Introduction to Programming Grade:3.6 Credit Hours: 4.0cs1410 C++ Programming Grade:2.6 Credit Hours: 4.0cs2420 Introduction to Data Structures Grade:3.2 Credit Hours: 4.0cs2810 Computer Architecture Grade:3.8 Credit Hours: 3.0Cumulative GPA: 3.259".replace(" ","")
-        self.assertEqual(data, data1)    
+        self.assertEqual(data, data1)

@@ -2,7 +2,7 @@
 
 class Course:
     """This is the course class, or what would be a single node in a linked list"""
-    def __init__(self, cname="", cnumber=0, ccredit_hr=0.0, cgrade=0.0, cnext=None):
+    def __init__(self, cnumber=0, cname="", ccredit_hr=0.0, cgrade=0.0, cnext=None):
         if isinstance(cname, str):
             self.cname = cname
         else:
@@ -38,6 +38,3 @@ class Course:
         return f"cs{str(self.number())} {self.name()} " \
                f"Grade:{str(self.grade())} Credit Hours: {str(self.credit_hr())}"
 
-test1 = Course("Intro to algorithms", 2420, 3.0, 4.0)
-
-print(test1)
