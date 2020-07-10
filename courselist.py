@@ -58,8 +58,8 @@ class CourseList:
                 temp_head.next = new_course
         else:
             if new_course.cnumber < temp_head.next.cnumber:
+                new_course.next = temp_head.next
                 temp_head.next = new_course
-                new_course.next = temp_head.next.next
             elif new_course.cnumber < temp_head.cnumber:
                 self.new_course.next = temp_head
                 self.head = self.new_course
@@ -127,17 +127,27 @@ class CourseList:
             self.remove_helper(temp_head, None, number)
 
 
-    def remove_all(self):
-        return 0
+    def remove_all(self, number):
+        while self.find(number) != -1:
+            self.remove(number)
 
 cl = CourseList()
 
 cl.insert(Course(1410, "1410 class", 3.0, 2.9))
 cl.insert(Course(1400, "1400 class", 3.0, 2.8))
+cl.insert(Course(1400, "1400 class", 3.0, 2.8))
+cl.insert(Course(1400, "1400 class", 3.0, 2.8))
+cl.insert(Course(1400, "1400 class", 3.0, 2.8))
 cl.insert(Course(2420, "2420 class", 4.0, 2.5))
+
+
+
 print(cl.head)
 print(cl.head.next)
 print(cl.head.next.next)
-print(cl.find(1400))
-print(cl.find(1410))
-print(cl.find(2420))
+print(cl.head.next.next.next)
+print(cl.head.next.next.next.next)
+print(cl.head.next.next.next.next.next)
+
+cl.remove_all(2420)
+print(cl.size())
