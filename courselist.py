@@ -2,6 +2,7 @@
 from course import Course
 from recursioncounter import RecursionCounter
 
+
 class CourseList:
     """Course list class"""
     def __init__(self, head=None):
@@ -56,6 +57,7 @@ class CourseList:
 
     def size(self):
         """Size function"""
+        self.csize = 0
         if self.head:
             temp_head = self.head
             self.size_helper(temp_head)
@@ -97,7 +99,10 @@ class CourseList:
             else:
                 temp_head.next = new_course
         else:
-            if new_course.cnumber < temp_head.next.cnumber:
+            if new_course.cnumber < temp_head.cnumber:
+                new_course.next = temp_head
+                self.head = new_course
+            elif new_course.cnumber < temp_head.next.cnumber:
                 new_course.next = temp_head.next
                 temp_head.next = new_course
             elif new_course.cnumber < temp_head.cnumber:
@@ -145,7 +150,6 @@ class CourseList:
         self.find_helper(temp_head, number)
         return self.class_to_search
 
-
     def remove_helper(self, temp_head, prev, number):
         """Remove helper function"""
         _ = RecursionCounter()
@@ -177,7 +181,6 @@ class CourseList:
             temp_head = self.head
             self.remove_helper(temp_head, None, number)
 
-
     def remove_all(self, number):
         """Remove all function"""
         if not isinstance(number, int):
@@ -195,13 +198,3 @@ class CourseList:
     def __str__(self):
         """Str function"""
         return self.__str__helper(self.head)
-
-
-# cl = CourseList()
-# cl.insert(Course(1000))
-# for _ in range(20):
-#     cl.insert(Course(1200))
-# cl.insert(Course(1800))
-# print(cl.size())
-# cl.remove_all(1200)
-# print(cl.size())

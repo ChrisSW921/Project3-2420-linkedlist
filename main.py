@@ -8,8 +8,8 @@ def main():
     course_list = CourseList()
     number, name, credit, grade = range(4)
     with open("data.txt") as file:
-        for line in file:
-            data = line.strip().split(",")
+        for item in file:
+            data = item.strip().split(",")
             course_list.insert(Course(int(data[number]), data[name], float(data[credit]), float(data[grade])))
 
     print("Current List: (" + str(course_list.size()) + ")")
