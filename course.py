@@ -7,11 +7,11 @@ class Course:
             self.cname = cname
         else:
             raise ValueError
-        if isinstance(cnumber, int):
+        if isinstance(cnumber, int) and cnumber >= 0:
             self.cnumber = cnumber
         else:
             raise ValueError
-        if isinstance(ccredit_hr, float) and isinstance(cgrade, float) and cgrade >= 0.0:
+        if isinstance(ccredit_hr, float) and isinstance(cgrade, float) and cgrade >= 0.0 and ccredit_hr >= 0.0:
             self.ccredit_hr = ccredit_hr
             self.cgrade = cgrade
         else:
